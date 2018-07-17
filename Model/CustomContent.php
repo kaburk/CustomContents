@@ -10,7 +10,7 @@
  * @license			MIT
  */
 
-class CustomContent extends AppModel {
+class CustomContent extends CustomContentsAppModel {
 
 /**
  * Behavior Setting
