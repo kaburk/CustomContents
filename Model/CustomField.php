@@ -10,6 +10,18 @@
  * @license			MIT
  */
 
-class CustomField extends AppModel {
+class CustomField extends CustomContentsAppModel {
+
+/**
+ * AfterSave
+ * @param bool $created
+ * @param array $options
+ */
+	public function afterSave($created, $options = []) {
+		parent::afterSave($created, $options);
+		if($created) {
+			$this->addAArticleField($this->data['CustomField']['custom_content_id'], $this->data['CustomField']['name']);
+		}
+	}
 
 }

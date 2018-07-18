@@ -23,5 +23,10 @@ class CustomContent extends CustomContentsAppModel {
  * @var array
  */
 	public $hasMany = ['CustomField'];
-	
+
+	public function afterSave($created, $options = []) {
+		parent::afterSave($created, $options);
+		$this->createArticleTable($this->id);
+	}
+
 }

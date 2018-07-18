@@ -39,7 +39,6 @@ class CustomContentsController extends AppController {
 			$this->ajaxError(500, __d('baser', '無効な処理です。'));
 		}
 		if ($data = $this->CustomContent->save($this->request->data)) {
-			$this->CustomContent->createTable($this->CustomContent->id);
 			$this->setMessage(__d('baser', 'カスタムコンテンツ「%s」を追加しました。', $this->request->data['Content']['title']), false, true, false);
 			return json_encode($data['Content']);
 		} else {

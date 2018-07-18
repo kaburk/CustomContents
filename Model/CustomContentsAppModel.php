@@ -18,7 +18,7 @@ class CustomContentsAppModel extends AppModel {
  * @param string $contentName コンテンツ名
  * @return boolean
  */
-	public function createTable($customContentId) {
+	public function createArticleTable($customContentId) {
 		/* @var DboSource $db */
 		$db = $this->getDataSource();
 		$schema = [
@@ -27,7 +27,7 @@ class CustomContentsAppModel extends AppModel {
 			'created' => ['type' => 'datetime', 'null' => true, 'default' => null],
 			'indexes' => ['PRIMARY' => ['column' => 'id', 'unique' => 1]]
 		];
-		$table = $this->createTableName($customContentId);
+		$table = $this->createArticleTableName($customContentId);
 		$ret = true;
 		if ($this->tableExists($db->config['prefix'] . $table)) {
 			$ret = $db->dropTable(array('table' => $table));
@@ -46,13 +46,29 @@ class CustomContentsAppModel extends AppModel {
  * @param $mailContentId
  * @return string
  */
-	public function createTableName($customContentId) {
+	public function createArticleTableName($customContentId) {
 		$customContentId = (int) $customContentId;
 		if(is_int($customContentId)) {
 			return 'custom_contents_articles_' . $customContentId;
 		} else {
 			throw new BcException(__d('baser', 'createTableName の引数 $customContentId はint型しか受けつけていません。'));
 		}
+	}
+
+/**
+ * メッセージファイルにフィールドを追加する
+ *
+ * @param string $customContentId
+ * @param string $field
+ * @return bool
+ */
+	public function addAArticleField($customContentId, $field) {
+		$table = $this->createArticleTableName($customContentId);
+		return parent::addField([
+			'field' => $field,
+			'column' => ['type' => 'text'],
+			'table' => $table
+		]);
 	}
 
 }
