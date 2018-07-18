@@ -27,15 +27,15 @@
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h2>フィールド一覧</h2>
+<h2><?php echo __d('baser', 'フィールド一覧') ?></h2>
 
 <?php if(!empty($this->data['CustomField'])): ?>
 <table class="list-table">
     <tr>
         <th><?php $this->BcBaser->link($this->BcBaser->getImg('admin/btn_add.png', ['alt' => __d('baser', '新規追加')]) . ' ' . __d('baser', '新規追加'), ['controller' => 'custom_fields', 'action' => 'add', $this->BcForm->value('CustomContent.id')]) ?></th>
-        <th>NO</th>
-        <th>フィールド名</th>
-        <th>タイトル</th>
+        <th><?php echo __d('baser', 'NO') ?></th>
+        <th><?php echo __d('baser', 'フィールド名') ?></th>
+        <th><?php echo __d('baser', 'タイトル') ?></th>
     </tr>
     <?php foreach($this->data['CustomField'] as $field): ?>
     <tr>
@@ -47,7 +47,7 @@
     <?php endforeach ?>    
 </table>	
 <?php else: ?>
-<?php $this->BcBaser->link('フィールドを追加する', ['controller' => 'custom_fields', 'action' => 'add', $this->BcForm->value('CustomContent.id')], ['class' => 'button-small']) ?>
+<?php $this->BcBaser->link(__d('baser', 'フィールドを追加する'), ['controller' => 'custom_fields', 'action' => 'add', $this->BcForm->value('CustomContent.id')], ['class' => 'button-small']) ?>
 <?php endif ?>
 
 

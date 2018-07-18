@@ -24,11 +24,11 @@
 <?php echo $this->BcForm->hidden('type') ?>
 	<table class="form-table">
 		<tr>
-			<th>フィールド名</th>
+			<th><?php echo __d('baser', 'フィールド名') ?></th>
 			<td><?php echo $this->BcForm->input('CustomField.name', ['size' => 60]) ?></td>
 		</tr>
 		<tr>
-			<th>タイトル</th>
+			<th><?php echo __d('baser', 'タイトル') ?></th>
 			<td><?php echo $this->BcForm->input('CustomField.title', ['size' => 60]) ?></td>
 		</tr>
 	</table>
