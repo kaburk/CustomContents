@@ -72,6 +72,10 @@ class CustomArticlesController extends AppController {
 		$this->set('articles', $this->CustomArticle->find('all'));
 	}
 
+	public function admin_add($customContentId) {
+		$this->pageTitle = __d('baser', '新規登録') . ' : ' . $this->request->params['Content']['title'];
+	}
+
 /**
  * Before Render
  */
