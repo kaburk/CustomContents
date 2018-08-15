@@ -49,7 +49,7 @@ $this->BcListTable->setColumnNumber(5);
         <td><?php echo h($field['id']) ?></td>
         <td><?php echo h($field['name']) ?></td>
         <td><?php echo h($field['title']) ?></td>
-        <?php echo $this->BcListTable->dispatchShowRow($data) ?>
+        <?php echo $this->BcListTable->dispatchShowRow($field) ?>
 		<td>
 			<?php echo $this->BcTime->format('Y-m-d', $field['created']) ?><br />
 			<?php echo $this->BcTime->format('Y-m-d', $field['modified']) ?>

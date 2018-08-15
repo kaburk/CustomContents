@@ -23,7 +23,7 @@ $config = [
 						'manage' => [
 							'admin' => true,
 							'plugin'	=> 'custom_contents',
-							'controller'=> 'costom_articles',
+							'controller'=> 'custom_articles',
 							'action'	=> 'index'
 						],
 						'add'	=> [

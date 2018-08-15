@@ -10,6 +10,11 @@
  * @license			MIT
  */
 
+/**
+ * Class CustomContent
+ *
+ * @property CustomField $CustomField
+ */
 class CustomContent extends CustomContentsAppModel {
 
 /**
@@ -19,11 +24,16 @@ class CustomContent extends CustomContentsAppModel {
 	public $actsAs = ['BcContents'];
 	
 /**
- * hasMany
+ * Has Many
  * @var array
  */
 	public $hasMany = ['CustomField'];
 
+/**
+ * After Save
+ * @param bool $created
+ * @param array $options
+ */
 	public function afterSave($created, $options = []) {
 		parent::afterSave($created, $options);
 		$this->createArticleTable($this->id);

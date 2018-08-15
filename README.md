@@ -4,6 +4,8 @@
 
 - CustomField のバリデーション
 - CustomArticle のテーブル生成処理
+- CustomArticle のテーブル更新処理
+	- 更新時にモデルキャッシュを削除
 - CustomArticle の管理画面
 - フロントエンド表示
 - 検索機能
