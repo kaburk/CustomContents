@@ -45,8 +45,8 @@ $config = [
 							'action'	=> 'delete'
 						],
 						'view' => [
-							'plugin'	=> 'custom_contents',
-							'controller'=> 'custom_contents',
+							'plugin'	=> 'custom_content',
+							'controller'=> 'custom_content',
 							'action'	=> 'index'
 						],
 						'copy'	=> [
