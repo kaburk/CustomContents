@@ -72,8 +72,47 @@ class CustomArticlesController extends AppController {
 		$this->set('articles', $this->CustomArticle->find('all'));
 	}
 
+/**
+ * 記事追加
+ * @param $customContentId
+ * @throws Exception
+ */
 	public function admin_add($customContentId) {
+		if($this->request->data) {
+			$this->CustomArticle->create($this->request->data);
+			if($this->CustomArticle->save()) {
+				$this->setMessage(sprintf(__d('baser', '%s を新規登録しました。'), $this->CustomArticle->id), false, true);
+				$this->redirect(['action' => 'edit', $customContentId, $this->CustomArticle->id]);
+			} else {
+				$this->setMessage(__d('baser', 'エラーが発生しました。内容を確認してください。'), true);
+			}
+		}
 		$this->pageTitle = __d('baser', '新規登録') . ' : ' . $this->request->params['Content']['title'];
+	}
+
+/**
+ * 記事編集
+ * @param $customContentId
+ * @param $customArticleId
+ * @throws Exception
+ */
+	public function admin_edit($customContentId, $customArticleId) {
+		if(!$customArticleId) {
+			throw new BcException(__d('baser', '不正なアクセスです。'));
+		}
+		if(!$this->request->data) {
+			$this->request->data = $this->CustomArticle->read(null, $customArticleId);
+		} else {
+			$this->CustomArticle->set($this->request->data);
+			if($this->CustomArticle->save()) {
+				$this->setMessage(sprintf(__d('baser', '%s を更新しました。'), $this->CustomArticle->id), false, true);
+				$this->redirect(['action' => 'edit', $customContentId, $this->CustomArticle->id]);
+			} else {
+				$this->setMessage(__d('baser', 'エラーが発生しました。内容を確認してください。'), true);
+			}
+		}
+		// @TODO first_name を 記事のタイトルに変更する
+		$this->pageTitle = __d('baser', '編集') . ' : ' . $this->request->params['Content']['title'] . '「' . $this->request->data['CustomArticle']['first_name'] . '」';
 	}
 
 /**

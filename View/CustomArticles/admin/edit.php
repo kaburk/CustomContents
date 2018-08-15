@@ -16,4 +16,4 @@
  ?>
 
 
-<?php $this->BcBaser->element('CustomContents.admin/custom_articles/form', ['formType' => 'add']) ?>
+<?php $this->BcBaser->element('CustomContents.admin/custom_articles/form', ['formType' => 'edit']) ?>
